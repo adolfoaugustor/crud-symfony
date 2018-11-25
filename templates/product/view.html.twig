@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} View Product - {% endblock %}
+
+{% block body %}
+    <h1>View product </h1>
+
+    <hr>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Cod.</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>R$ {{ product.price|number_format(2, ",", ".") }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description|nl2br }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ path('list_product') }}" class="btn btn-sm btn-primary pull-right">
+                <i class="fa fa-arrow-left"></i> Return
+            </a>
+        </div>
+    </div>
+
+
+
+{% endblock %}
