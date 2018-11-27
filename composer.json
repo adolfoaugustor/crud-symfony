@@ -7,6 +7,7 @@
         "ext-iconv": "*",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/console": "4.1.*",
+        "symfony/debug-pack": "^1.0",
         "symfony/flex": "^1.1",
         "symfony/form": "4.1.*",
         "symfony/framework-bundle": "4.1.*",
@@ -14,6 +15,7 @@
         "symfony/orm-pack": "^1.0",
         "symfony/twig-bundle": "4.1.*",
         "symfony/validator": "4.1.*",
+        "symfony/var-dumper": "4.1.*",
         "symfony/web-server-bundle": "4.1.*",
         "symfony/yaml": "4.1.*"
     },

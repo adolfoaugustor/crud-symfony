@@ -9,7 +9,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
-use Doctrine\DBAL\Types\DecimalType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,12 +23,13 @@ class HomeController extends Controller
      * @return Response
      *
      * @Route("/")
+     * @Template("hello/index.html.twig")
      */
     public function index()
     {
-        return new Response(
-            "<html><body><h1>Helow!</h1></body></body></html>"
-        );
+        return $this->render("hello/index.html.twig", [
+            'message'=>"ola Hellow Word!"
+        ]);
     }
 
     /**
