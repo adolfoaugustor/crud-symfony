@@ -101,6 +101,24 @@ class Animal
         return $this;
     }
 
+    /**
+     * @return object
+     */
+    public function getBreed(): object
+    {
+        return $this->breed;
+    }
+
+    /**
+     * @param object $breed
+     * @return Animal
+     */
+    public function setBreed(object $breed): Animal
+    {
+        $this->breed = $breed;
+        return $this;
+    }
+
 
 
 }
