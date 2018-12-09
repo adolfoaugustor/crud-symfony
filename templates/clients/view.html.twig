@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ clients.nameClient }} - Visualizar cliente{% endblock %}
+
+{% block body %}
+
+    <h1>Dados do cliente - {{ clients.nameClient }}</h1>
+    <table class="table table-striped">
+        <tr>
+            <th colspan="2">Dados do cliente</th>
+        </tr>
+        <tr>
+            <th>Cod.</th>
+            <th>{{ clients.id }}</th>
+        </tr>
+        <tr>
+            <th>Nome</th>
+            <th>{{ clients.nameClient }}</th>
+        </tr>
+        <tr>
+            <th>Telefone</th>
+            <th>{{ clients.telephoneClient }}</th>
+        </tr>
+        <tr>
+            <th>E-mail</th>
+            <th>{{ clients.emailClient }}</th>
+        </tr>
+        <tr>
+            <th colspan="2">Endereço do cliente</th>
+        </tr>
+        <tr>
+            <th>Rua</th>
+            <td>{{ clients.address.streetAddress }} Nº {{ clients.address.numberAddress }} </td>
+        </tr>
+        <tr>
+            <th>Bairro</th>
+            <td>{{ clients.address.districtAddress }} </td>
+        </tr>
+
+    </table>
+{% endblock %}
+
+

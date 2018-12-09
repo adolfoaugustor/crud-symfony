@@ -23,8 +23,8 @@ class Animal
     private $name_animal;
 
     /**
-     * @var date
-     * @ORM\Column(type="date")
+     * @var datetime
+     * @ORM\Column(type="datetime")
      */
     private $date_birth_animal;
 
@@ -66,18 +66,18 @@ class Animal
     }
 
     /**
-     * @return date
+     * @return datetime
      */
-    public function getDateBirthAnimal(): date
+    public function getDateBirthAnimal()
     {
         return $this->date_birth_animal;
     }
 
     /**
-     * @param date $date_birth_animal
+     * @param datetime $date_birth_animal
      * @return Animal
      */
-    public function setDateBirthAnimal(date $date_birth_animal): Animal
+    public function setDateBirthAnimal($date_birth_animal)
     {
         $this->date_birth_animal = $date_birth_animal;
         return $this;
@@ -98,24 +98,6 @@ class Animal
     public function setClient(object $client): Animal
     {
         $this->client = $client;
-        return $this;
-    }
-
-    /**
-     * @return object
-     */
-    public function getBreed(): object
-    {
-        return $this->breed;
-    }
-
-    /**
-     * @param object $breed
-     * @return Animal
-     */
-    public function setBreed(object $breed): Animal
-    {
-        $this->breed = $breed;
         return $this;
     }
 

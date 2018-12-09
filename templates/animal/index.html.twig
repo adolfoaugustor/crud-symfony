@@ -22,7 +22,7 @@
         {% for animal in animal %}
             <tr>
                 <td>{{ animal.id }}</td>
-                <td><a href="">{{ animal.nameAnimal }}</a></td>
+                <td><a href="{{ path('view_animal', {'id':animal.id}) }}">{{ animal.nameAnimal }}</a></td>
                 <td>{{ animal.dateBirthAnimal }}</td>
             </tr>
         {% else %}

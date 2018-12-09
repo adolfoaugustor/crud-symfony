@@ -111,7 +111,7 @@ class Client
     /**
      * @return object
      */
-    public function getAddress(): object
+    public function getAddress()
     {
         return $this->address;
     }
@@ -120,7 +120,7 @@ class Client
      * @param object $address
      * @return Client
      */
-    public function setAddress(object $address): Client
+    public function setAddress(Address $address)
     {
         $this->address = $address;
         return $this;
@@ -129,7 +129,7 @@ class Client
     /**
      * @return object
      */
-    public function getAnimal(): object
+    public function getAnimal()
     {
         return $this->animal;
     }
@@ -138,7 +138,7 @@ class Client
      * @param object $animal
      * @return Client
      */
-    public function setAnimal(object $animal): Client
+    public function setAnimal($animal): Client
     {
         $this->animal = $animal;
         return $this;

@@ -22,7 +22,7 @@
         {% for clients in clients %}
         <tr>
             <td>{{ clients.id }}</td>
-            <td><a href="">{{ clients.nameClient }}</a></td>
+            <td><a href="{{ path('view_client', {'id':clients.id}) }}">{{ clients.nameClient }}</a></td>
             <td>{{ clients.emailClient }}</td>
         </tr>
         {% else %}
