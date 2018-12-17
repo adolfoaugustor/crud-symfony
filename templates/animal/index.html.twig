@@ -23,7 +23,7 @@
             <tr>
                 <td>{{ animal.id }}</td>
                 <td><a href="{{ path('view_animal', {'id':animal.id}) }}">{{ animal.nameAnimal }}</a></td>
-                <td>{{ animal.dateBirthAnimal }}</td>
+                <td>{{ animal.dateBirthAnimal|date("m/d/Y") }}</td>
             </tr>
         {% else %}
             <tr>
