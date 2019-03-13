@@ -29,7 +29,7 @@ class Category
      */
     private $posts;
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
@@ -37,7 +37,7 @@ class Category
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -46,7 +46,7 @@ class Category
      * @param string $name
      * @return Category
      */
-    public function setName(string $name): Category
+    public function setName(string $name)
     {
         $this->name = $name;
         return $this;
@@ -55,7 +55,7 @@ class Category
     /**
      * @return Post
      */
-    public function getPosts(): Post
+    public function getPosts()
     {
         return $this->posts;
     }
@@ -64,7 +64,7 @@ class Category
      * @param Post $posts
      * @return Category
      */
-    public function setPosts(Post $posts): Category
+    public function setPosts(Post $posts)
     {
         $this->posts = $posts;
         return $this;
