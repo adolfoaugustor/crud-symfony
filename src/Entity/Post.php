@@ -30,9 +30,9 @@ class Post
 
     /**
      * @var boolean
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
-    private $status;
+    private $status = true;
 
     /**
      * @var Category
@@ -48,7 +48,7 @@ class Post
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -57,7 +57,7 @@ class Post
      * @param string $title
      * @return Post
      */
-    public function setTitle(string $title): Post
+    public function setTitle(string $title): ?Post
     {
         $this->title = $title;
         return $this;
@@ -66,7 +66,7 @@ class Post
     /**
      * @return string
      */
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }
@@ -75,7 +75,7 @@ class Post
      * @param string $content
      * @return Post
      */
-    public function setContent(string $content): Post
+    public function setContent(string $content): ?Post
     {
         $this->content = $content;
         return $this;
@@ -84,7 +84,7 @@ class Post
     /**
      * @return bool
      */
-    public function isStatus(): bool
+    public function isStatus(): ?bool
     {
         return $this->status;
     }
@@ -93,7 +93,7 @@ class Post
      * @param bool $status
      * @return Post
      */
-    public function setStatus(bool $status): Post
+    public function setStatus(bool $status): ?Post
     {
         $this->status = $status;
         return $this;
@@ -102,7 +102,7 @@ class Post
     /**
      * @return Category
      */
-    public function getCategory(): Category
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
@@ -111,7 +111,7 @@ class Post
      * @param Category $category
      * @return Post
      */
-    public function setCategory(Category $category): Post
+    public function setCategory(Category $category): ?Post
     {
         $this->category = $category;
         return $this;
