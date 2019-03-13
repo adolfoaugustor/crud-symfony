@@ -712,6 +712,7 @@
     <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
       <argument>/var/www/html/crud-symfony/var/log/dev.log</argument>
     </service>
+    <service id="App\Admin\CategoryAdmin" class="App\Admin\CategoryAdmin" autowire="true" autoconfigure="true"/>
     <service id="App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -719,6 +720,84 @@
     <service id="App\Repository\PostRepository" class="App\Repository\PostRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
+    </service>
+    <service id="admin.category" class="App\Admin\CategoryAdmin" shared="false" public="true" autowire="true" autoconfigure="true">
+      <tag name="sonata.admin" manager_type="orm" label="Categorias"/>
+      <argument>admin.category</argument>
+      <argument>App\Entity\Category</argument>
+      <argument>Sonata\AdminBundle\Controller\CRUDController</argument>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.data_collector"/>
+        <argument>false</argument>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="debug.validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler.noop"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setPagerType">
+        <argument>default</argument>
+      </call>
+      <call method="setLabel">
+        <argument>Categorias</argument>
+      </call>
+      <call method="showMosaicButton">
+        <argument>true</argument>
+      </call>
+      <call method="setTemplateRegistry">
+        <argument type="service" id="admin.category.template_registry"/>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>@SonataDoctrineORMAdmin/Form/filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
     </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
@@ -5435,19 +5514,45 @@
         <argument type="service" id="sonata.admin.global_template_registry"/>
       </call>
       <call method="setAdminServiceIds">
-        <argument type="collection"/>
+        <argument type="collection">
+          <argument>admin.category</argument>
+        </argument>
       </call>
       <call method="setAdminGroups">
-        <argument type="collection"/>
+        <argument type="collection">
+          <argument key="default" type="collection">
+            <argument key="label">default</argument>
+            <argument key="label_catalogue">SonataAdminBundle</argument>
+            <argument key="icon">&lt;i class="fa fa-folder"&gt;&lt;/i&gt;</argument>
+            <argument key="roles" type="collection"/>
+            <argument key="on_top">false</argument>
+            <argument key="keep_open">false</argument>
+            <argument key="items" type="collection">
+              <argument type="collection">
+                <argument key="admin">admin.category</argument>
+                <argument key="label">Categorias</argument>
+                <argument key="route"></argument>
+                <argument key="route_params" type="collection"/>
+                <argument key="route_absolute">false</argument>
+              </argument>
+            </argument>
+          </argument>
+        </argument>
       </call>
       <call method="setAdminClasses">
-        <argument type="collection"/>
+        <argument type="collection">
+          <argument key="App\Entity\Category" type="collection">
+            <argument>admin.category</argument>
+          </argument>
+        </argument>
       </call>
     </service>
     <service id="sonata.admin.route_loader" class="Sonata\AdminBundle\Route\AdminPoolLoader" public="true">
       <tag name="routing.loader"/>
       <argument type="service" id="sonata.admin.pool"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument>admin.category</argument>
+      </argument>
       <argument type="service" id="service_container"/>
     </service>
     <service id="sonata.admin.helper" class="Sonata\AdminBundle\Admin\AdminHelper" public="true">
@@ -6419,6 +6524,10 @@
         <argument key="list" type="service" id="knp_menu.renderer.list"/>
         <argument key="twig" type="service" id="knp_menu.renderer.twig"/>
       </argument>
+    </service>
+    <service id="admin.category.template_registry" class="Sonata\AdminBundle\Templating\TemplateRegistry" public="true">
+      <tag name="sonata.admin.template_registry"/>
+      <argument>%sonata.admin.configuration.templates%</argument>
     </service>
     <service id=".service_locator.WPZmidW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
