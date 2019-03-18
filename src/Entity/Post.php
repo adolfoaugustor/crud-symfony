@@ -36,9 +36,16 @@ class Post
 
     /**
      * @var Category
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="posts")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="posts")
+     * @ORM\JoinTable(name="category_post")
      */
     private $category;
+
+    /*
+     * @var Author
+     * @ORM\ManyToMany(targetEntity="App\Entity\Author", inversedBy="posts")
+    */
+    private $author;
 
     public function getId(): ?int
     {
@@ -117,7 +124,23 @@ class Post
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 
+    /**
+     * @param mixed $author
+     * @return Post
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+        return $this;
+    }
 
 
 }

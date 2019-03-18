@@ -118,8 +118,8 @@
     <parameter key="kernel.http_method_override">true</parameter>
     <parameter key="kernel.trusted_hosts" type="collection"/>
     <parameter key="kernel.default_locale">en</parameter>
-    <parameter key="templating.helper.code.file_link_format">phpstorm://open?%f:%l</parameter>
-    <parameter key="debug.file_link_format">phpstorm://open?%f:%l</parameter>
+    <parameter key="templating.helper.code.file_link_format">null</parameter>
+    <parameter key="debug.file_link_format">null</parameter>
     <parameter key="session.metadata.storage_key">_sf2_meta</parameter>
     <parameter key="session.storage.options" type="collection">
       <parameter key="cache_limiter">0</parameter>
@@ -713,6 +713,7 @@
       <argument>/var/www/html/crud-symfony/var/log/dev.log</argument>
     </service>
     <service id="App\Admin\CategoryAdmin" class="App\Admin\CategoryAdmin" autowire="true" autoconfigure="true"/>
+    <service id="App\Admin\PostAdmin" class="App\Admin\PostAdmin" autowire="true" autoconfigure="true"/>
     <service id="App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -799,6 +800,84 @@
         </argument>
       </call>
     </service>
+    <service id="admin.post" class="App\Admin\PostAdmin" shared="false" public="true" autowire="true" autoconfigure="true">
+      <tag name="sonata.admin" manager_type="orm" label="Postagens"/>
+      <argument>admin.post</argument>
+      <argument>App\Entity\Post</argument>
+      <argument>Sonata\AdminBundle\Controller\CRUDController</argument>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.data_collector"/>
+        <argument>false</argument>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="debug.validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler.noop"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setPagerType">
+        <argument>default</argument>
+      </call>
+      <call method="setLabel">
+        <argument>Postagens</argument>
+      </call>
+      <call method="showMosaicButton">
+        <argument>true</argument>
+      </call>
+      <call method="setTemplateRegistry">
+        <argument type="service" id="admin.post.template_registry"/>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>@SonataDoctrineORMAdmin/Form/filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+    </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -828,7 +907,7 @@
       <argument>null</argument>
       <argument>true</argument>
       <argument>UTF-8</argument>
-      <argument>phpstorm://open?%%f:%%l</argument>
+      <argument>null</argument>
     </service>
     <service id="validate_request_listener" class="Symfony\Component\HttpKernel\EventListener\ValidateRequestListener" public="false">
       <tag name="kernel.event_subscriber"/>
@@ -2314,7 +2393,7 @@
       <argument>true</argument>
     </service>
     <service id="debug.file_link_formatter" class="Symfony\Component\HttpKernel\Debug\FileLinkFormatter" public="false">
-      <argument>phpstorm://open?%%f:%%l</argument>
+      <argument>null</argument>
       <argument type="service" id="request_stack" on-invalid="ignore"/>
       <argument>/var/www/html/crud-symfony</argument>
       <argument type="service" id="debug.file_link_formatter.url_format"/>
@@ -5516,6 +5595,7 @@
       <call method="setAdminServiceIds">
         <argument type="collection">
           <argument>admin.category</argument>
+          <argument>admin.post</argument>
         </argument>
       </call>
       <call method="setAdminGroups">
@@ -5535,6 +5615,13 @@
                 <argument key="route_params" type="collection"/>
                 <argument key="route_absolute">false</argument>
               </argument>
+              <argument type="collection">
+                <argument key="admin">admin.post</argument>
+                <argument key="label">Postagens</argument>
+                <argument key="route"></argument>
+                <argument key="route_params" type="collection"/>
+                <argument key="route_absolute">false</argument>
+              </argument>
             </argument>
           </argument>
         </argument>
@@ -5544,6 +5631,9 @@
           <argument key="App\Entity\Category" type="collection">
             <argument>admin.category</argument>
           </argument>
+          <argument key="App\Entity\Post" type="collection">
+            <argument>admin.post</argument>
+          </argument>
         </argument>
       </call>
     </service>
@@ -5552,6 +5642,7 @@
       <argument type="service" id="sonata.admin.pool"/>
       <argument type="collection">
         <argument>admin.category</argument>
+        <argument>admin.post</argument>
       </argument>
       <argument type="service" id="service_container"/>
     </service>
@@ -6526,6 +6617,10 @@
       </argument>
     </service>
     <service id="admin.category.template_registry" class="Sonata\AdminBundle\Templating\TemplateRegistry" public="true">
+      <tag name="sonata.admin.template_registry"/>
+      <argument>%sonata.admin.configuration.templates%</argument>
+    </service>
+    <service id="admin.post.template_registry" class="Sonata\AdminBundle\Templating\TemplateRegistry" public="true">
       <tag name="sonata.admin.template_registry"/>
       <argument>%sonata.admin.configuration.templates%</argument>
     </service>

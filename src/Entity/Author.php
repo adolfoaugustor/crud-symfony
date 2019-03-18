@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\AuthorRepository")
  */
-class Category
+class Author
 {
     /**
      * @ORM\Id()
@@ -16,26 +16,14 @@ class Category
      */
     private $id;
 
-    /**
+    /*
      * @var string
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     private $name;
 
     /**
-     * @var Post
-     * @ORM\ManyToMany(targetEntity="App\Entity\Post", mappedBy="category")
-     */
-    private $posts;
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return string
+     * @return mixed
      */
     public function getName()
     {
@@ -43,17 +31,17 @@ class Category
     }
 
     /**
-     * @param string $name
-     * @return Category
+     * @param mixed $name
+     * @return Author
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
         return $this;
     }
 
     /**
-     * @return Post
+     * @return mixed
      */
     public function getPosts()
     {
@@ -61,14 +49,23 @@ class Category
     }
 
     /**
-     * @param Post $posts
-     * @return Category
+     * @param mixed $posts
+     * @return Author
      */
-    public function setPosts(Post $posts)
+    public function setPosts($posts)
     {
         $this->posts = $posts;
         return $this;
     }
 
+    /*
+     * @var Post
+     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="author")
+    */
+    private $posts;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 }
