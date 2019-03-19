@@ -16,7 +16,7 @@ class Author
      */
     private $id;
 
-    /*
+    /**
      * @var string
      * @ORM\Column(type="string")
      */
@@ -58,7 +58,7 @@ class Author
         return $this;
     }
 
-    /*
+    /**
      * @var Post
      * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="author")
     */

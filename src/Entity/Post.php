@@ -41,10 +41,10 @@ class Post
      */
     private $category;
 
-    /*
+    /**
      * @var Author
-     * @ORM\ManyToMany(targetEntity="App\Entity\Author", inversedBy="posts")
-    */
+     * @ORM\ManyToOne(targetEntity="App\Entity\Author", inversedBy="posts")
+     */
     private $author;
 
     public function getId(): ?int
@@ -109,7 +109,7 @@ class Post
     /**
      * @return Category
      */
-    public function getCategory(): ?Category
+    public function getCategory()
     {
         return $this->category;
     }
@@ -136,7 +136,7 @@ class Post
      * @param mixed $author
      * @return Post
      */
-    public function setAuthor($author)
+    public function setAuthor($author):Post
     {
         $this->author = $author;
         return $this;
