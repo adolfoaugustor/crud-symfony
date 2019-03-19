@@ -10,12 +10,10 @@ namespace App\Admin;
 use App\Entity\Author;
 use App\Entity\Category;
 use App\Entity\Post;
-use phpDocumentor\Reflection\Types\Boolean;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
