@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
@@ -109,7 +110,7 @@ class Post
     /**
      * @return Category
      */
-    public function getCategory()
+    public function getCategory(): PersistentCollection
     {
         return $this->category;
     }
@@ -125,9 +126,9 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return Author
      */
-    public function getAuthor()
+    public function getAuthor(): ?Author
     {
         return $this->author;
     }
@@ -136,7 +137,7 @@ class Post
      * @param mixed $author
      * @return Post
      */
-    public function setAuthor($author):Post
+    public function setAuthor($author):?Post
     {
         $this->author = $author;
         return $this;
