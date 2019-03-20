@@ -102,6 +102,9 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "friendsofsymfony/user-bundle": {
+        "version": "v2.1.2"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -197,8 +200,14 @@
     "sonata-project/doctrine-orm-admin-bundle": {
         "version": "3.8.3"
     },
+    "sonata-project/easy-extends-bundle": {
+        "version": "2.5.0"
+    },
     "sonata-project/exporter": {
         "version": "1.11.0"
+    },
+    "sonata-project/user-bundle": {
+        "version": "4.3.0"
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.1.3"

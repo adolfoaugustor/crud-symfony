@@ -93,10 +93,12 @@ class ComposerStaticInit9dca31ca6240c1e3d8d404b5d1ceddbc
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
+            'Sonata\\UserBundle\\' => 18,
             'Sonata\\Twig\\' => 12,
             'Sonata\\Serializer\\' => 18,
             'Sonata\\Form\\' => 12,
             'Sonata\\Exporter\\' => 16,
+            'Sonata\\EasyExtendsBundle\\' => 25,
             'Sonata\\Doctrine\\' => 16,
             'Sonata\\DoctrineORMAdminBundle\\' => 30,
             'Sonata\\DatagridBundle\\' => 22,
@@ -129,6 +131,7 @@ class ComposerStaticInit9dca31ca6240c1e3d8d404b5d1ceddbc
         array (
             'Fig\\Link\\' => 9,
             'Facebook\\WebDriver\\' => 19,
+            'FOS\\UserBundle\\' => 15,
         ),
         'E' => 
         array (
@@ -165,8 +168,8 @@ class ComposerStaticInit9dca31ca6240c1e3d8d404b5d1ceddbc
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Zend\\EventManager\\' => 
         array (
@@ -412,6 +415,10 @@ class ComposerStaticInit9dca31ca6240c1e3d8d404b5d1ceddbc
         array (
             0 => __DIR__ . '/..' . '/symfony/doctrine-bridge',
         ),
+        'Sonata\\UserBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/user-bundle/src',
+        ),
         'Sonata\\Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/core-bundle/src/Twig',
@@ -427,6 +434,10 @@ class ComposerStaticInit9dca31ca6240c1e3d8d404b5d1ceddbc
         'Sonata\\Exporter\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/exporter/src',
+        ),
+        'Sonata\\EasyExtendsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/easy-extends-bundle/src',
         ),
         'Sonata\\Doctrine\\' => 
         array (
@@ -508,6 +519,10 @@ class ComposerStaticInit9dca31ca6240c1e3d8d404b5d1ceddbc
         array (
             0 => __DIR__ . '/..' . '/facebook/webdriver/lib',
         ),
+        'FOS\\UserBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
+        ),
         'Exporter\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/exporter/aliases',
@@ -550,10 +565,10 @@ class ComposerStaticInit9dca31ca6240c1e3d8d404b5d1ceddbc
         ),
         'Doctrine\\Common\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/reflection/lib/Doctrine/Common',
+            0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
             1 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
             2 => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Common',
-            3 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
+            3 => __DIR__ . '/..' . '/doctrine/reflection/lib/Doctrine/Common',
         ),
         'Doctrine\\Bundle\\MigrationsBundle\\' => 
         array (

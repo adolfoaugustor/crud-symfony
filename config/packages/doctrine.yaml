@@ -14,6 +14,8 @@ doctrine:
         default_table_options:
             charset: utf8mb4
             collate: utf8mb4_unicode_ci
+        types:
+            json: Sonata\Doctrine\Types\JsonType
 
         url: '%env(resolve:DATABASE_URL)%'
     orm:
@@ -21,6 +23,9 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         mappings:
+            SonataUserBundle: ~
+            FOSUserBundle: ~
+            ApplicationSonataUserBundle: ~
             App:
                 is_bundle: false
                 type: annotation
