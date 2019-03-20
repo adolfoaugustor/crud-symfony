@@ -1,5 +1,6 @@
 sonata_admin:
-    title: 'Sonata Admin'
+    title: 'AWS Admin'
+    title_logo: 'img/logo.png'
     dashboard:
         blocks:
             - { type: sonata.admin.block.admin_list, position: left }
