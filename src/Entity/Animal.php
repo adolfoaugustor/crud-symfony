@@ -50,7 +50,7 @@ class Animal
     /**
      * @return string
      */
-    public function getNameAnimal(): string
+    public function getNameAnimal(): ?string
     {
         return $this->name_animal;
     }
@@ -100,7 +100,5 @@ class Animal
         $this->client = $client;
         return $this;
     }
-
-
 
 }

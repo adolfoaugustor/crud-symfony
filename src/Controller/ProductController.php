@@ -56,7 +56,6 @@ class ProductController extends Controller
 
     /**
      * @param Request $request
-     *
      * @Route("product/edit/{id}", name="edit_product")
      * @Template("product/update.html.twig")
      */

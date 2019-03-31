@@ -69,10 +69,9 @@ class Breed
         return $this;
     }
 
-    public function getNameSpecies()
+    public function getNaSpecie()
     {
-        return $this->getSpecies() ? $this->getSpecies()->getNameSpecies() : null;
+        return $this->getSpecies() ? $this->getSpecies()->getNameSpecies : null;
     }
-
 
 }

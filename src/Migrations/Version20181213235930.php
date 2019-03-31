@@ -15,7 +15,7 @@ final class Version20181213235930 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE animal CHANGE date_birth_animal date_birth_animal DATETIME NOT NULL');
+        $this->addSql('ALTER TABLE animals CHANGE date_birth_animal date_birth_animal DATETIME NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -23,6 +23,6 @@ final class Version20181213235930 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE animal CHANGE date_birth_animal date_birth_animal DATE NOT NULL');
+        $this->addSql('ALTER TABLE animals CHANGE date_birth_animal date_birth_animal DATE NOT NULL');
     }
 }
